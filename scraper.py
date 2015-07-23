@@ -32,7 +32,9 @@ def validateURL(url):
         r = requests.get(url, allow_redirects=True, timeout=20)
         count = 1
         html = BeautifulSoup(r.text)
-        
+        try:
+            title = html.title.text
+        except: pass
         while r.status_code == 500 and count < 4:
             print ("Attempt {0} - Status code: {1}. Retrying.".format(count, r.status_code))
             count += 1
@@ -43,7 +45,7 @@ def validateURL(url):
         else:
             ext = os.path.splitext(url)[1]
         validURL = r.status_code == 200
-        if html.title.text == 'Error':
+        if title == 'Error':
             validURL == 200
         validFiletype = ext in ['.csv', '.xls', '.xlsx']
         return validURL, validFiletype
