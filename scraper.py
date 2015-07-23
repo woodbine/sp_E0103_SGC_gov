@@ -36,6 +36,7 @@ def validateURL(url):
         try:
             title = html.title.text
         except: pass
+        print title
         while r.status_code == 500 and count < 4:
             print ("Attempt {0} - Status code: {1}. Retrying.".format(count, r.status_code))
             count += 1
