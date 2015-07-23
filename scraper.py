@@ -32,7 +32,7 @@ def validateURL(url):
         r = requests.get(url, allow_redirects=True, timeout=20)
         count = 1
         html = BeautifulSoup(r.text)
-        
+        print html.title
         while r.status_code == 500 and count < 4:
             print ("Attempt {0} - Status code: {1}. Retrying.".format(count, r.status_code))
             count += 1
