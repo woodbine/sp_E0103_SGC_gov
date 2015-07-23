@@ -43,7 +43,7 @@ def validateURL(url):
         else:
             ext = os.path.splitext(url)[1]
         validURL = r.status_code == 200
-        if html.title == 'Error':
+        if html.title.text == 'Error':
             validURL == 200
         validFiletype = ext in ['.csv', '.xls', '.xlsx']
         return validURL, validFiletype
