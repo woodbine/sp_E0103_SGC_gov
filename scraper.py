@@ -31,7 +31,7 @@ def validateURL(url):
     try:
         r = requests.get(url, allow_redirects=True, timeout=20)
         count = 1
-        if r.title = 'Execute Access Denied':
+        if r.title == 'Error':
             pass
         while r.status_code == 500 and count < 4:
             print ("Attempt {0} - Status code: {1}. Retrying.".format(count, r.status_code))
