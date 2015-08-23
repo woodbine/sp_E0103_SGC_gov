@@ -31,7 +31,7 @@ def validateURL(url):
     try:
         r = requests.get(url, allow_redirects=True, timeout=90)
         count = 1
-        html = BeautifulSoup(r.text)
+        html = BeautifulSoup(r.text, 'lxml')
         title = ''
         try:
             title = html.title.text
